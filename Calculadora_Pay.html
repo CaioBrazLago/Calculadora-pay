@@ -1,0 +1,69 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="sweetalert2.min.css">
+    <title>Calculadora Pay</title>
+</head>
+<body>
+
+<main class="container">
+    <img src="./assets/webposto 2.webp" alt="imagem webposto" id="webposto">
+
+    <div class="form">
+        <input type="button" name="botao" id="gerar-btn" value="GERAR SENHA" onclick="gerar()">
+        <div class="content-senha">
+            <input type="text" name="senha" id="senha" placeholder="A senha atual é">
+
+            <img src="./assets/lock.png" alt="senha">
+            <img src="./assets/copiar-escrita.png" alt="botão de copiar" id="copiar" onclick="copiar()" role="button">
+        </div>
+    </div>
+</main>
+
+<!-- Inclua o script para a biblioteca SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+<script>
+    function gerar() {
+        var data = new Date();
+        var dia = data.getDate();
+        var ano = data.getFullYear();
+        var mes = (data.getMonth() + 1);
+        var hora = data.getHours();
+        var gerar = Number(ano - mes - dia - hora - 3);
+        var campo = document.getElementById('senha').value = gerar;
+    }
+
+    function copiar() {
+        var senhaValue = document.getElementById('senha').value;
+        navigator.clipboard.writeText(senhaValue);
+
+        // Exibe o alerta do SweetAlert2 informando que a senha foi copiada
+        if (senhaValue > 1) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Senha copiada!',
+                text: 'A senha foi copiada para a área de transferência.',
+                timer: 2000, // Exibir o alerta por 2 segundos
+                showConfirmButton: false, // Ocultar o botão "OK"
+                toast: true,
+                position: 'top', // Corrigido: posição do alerta no topo
+            });
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Clique no botão gerar senha',
+                toast: true,
+                position: 'top',
+            });
+        }
+    }
+</script>
+</body>
+</html>
