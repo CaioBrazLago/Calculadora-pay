@@ -13,7 +13,7 @@
 <body>
 
 <main class="container">
-    <img src="./assets/webposto 2.webp" alt="imagem webposto" id="webposto">
+    <img src="https://petrosystem.com.br/wp-content/uploads/2021/03/logo-site.png" alt="imagem webposto" id="webposto">
 
     <div class="form">
         <input type="button" name="botao" id="gerar-btn" value="GERAR SENHA" onclick="gerar()">
@@ -26,7 +26,7 @@
     </div>
 </main>
 
-<!-- Inclua o script para a biblioteca SweetAlert2 -->
+<!-- script para a biblioteca SweetAlert2 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
 <script>
     function gerar() {
@@ -47,6 +47,9 @@
         if (senhaValue > 1) {
             Swal.fire({
                 icon: 'success',
+                width: 400,
+                padding: 0,
+                textcolor: '#F2F4F6',
                 title: 'Senha copiada!',
                 text: 'A senha foi copiada para a área de transferência.',
                 timer: 2000, // Exibir o alerta por 2 segundos
@@ -57,10 +60,12 @@
         } else {
             Swal.fire({
                 icon: 'error',
-                title: 'Oops...',
                 text: 'Clique no botão gerar senha',
                 toast: true,
                 position: 'top',
+                width: 400,
+                showConfirmButton: false,
+                timer: 2000,
             });
         }
     }
